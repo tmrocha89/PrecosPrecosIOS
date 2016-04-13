@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
+    <entity name="Divisao" representedClassName=".Divisao" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Imagem" representedClassName=".Imagem" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="produto" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Produto" inverseName="imagens" inverseEntity="Produto" syncable="YES"/>
+    </entity>
+    <entity name="Loja" representedClassName=".Loja" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="local" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Preco" representedClassName=".Preco" syncable="YES">
+        <attribute name="eCampanha" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="valor" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="loja" maxCount="1" deletionRule="Nullify" destinationEntity="Loja" syncable="YES"/>
+        <relationship name="produto" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Produto" inverseName="precos" inverseEntity="Produto" syncable="YES"/>
+    </entity>
+    <entity name="Produto" representedClassName=".Produto" syncable="YES">
+        <attribute name="adquirido" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="obs" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="divisao" maxCount="1" deletionRule="Nullify" destinationEntity="Divisao" syncable="YES"/>
+        <relationship name="imagens" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Imagem" inverseName="produto" inverseEntity="Imagem" syncable="YES"/>
+        <relationship name="precoAdquirido" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Preco" syncable="YES"/>
+        <relationship name="precos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Preco" inverseName="produto" inverseEntity="Preco" syncable="YES"/>
+    </entity>
+    <entity name="Server" representedClassName=".Server" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="port" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Divisao" positionX="169" positionY="171" width="128" height="73"/>
+        <element name="Imagem" positionX="162" positionY="279" width="128" height="105"/>
+        <element name="Loja" positionX="-225" positionY="-45" width="128" height="88"/>
+        <element name="Preco" positionX="-243" positionY="153" width="128" height="120"/>
+        <element name="Produto" positionX="-63" positionY="162" width="128" height="165"/>
+        <element name="Server" positionX="43" positionY="9" width="128" height="105"/>
+    </elements>
+</model>
