@@ -24,8 +24,20 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: "screenEdgeGoBack:")
+        edgePan.edges = .Left
+        
+        view.addGestureRecognizer(edgePan)
         precos = precoRepo.getPrecos(produto!.id!)
+        self.modalTransitionStyle = .FlipHorizontal
     }
+    
+    func screenEdgeGoBack(sender: UIScreenEdgePanGestureRecognizer) {
+        if (sender.state == .Ended) {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
+    
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -65,11 +77,6 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         
         return cell
-    }
-    
-    //quando se carregar na vista a View vai desaparecer    
-    @IBAction func doneBtn(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func showImages() -> Void {
