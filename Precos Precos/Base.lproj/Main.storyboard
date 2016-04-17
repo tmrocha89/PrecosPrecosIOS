@@ -99,7 +99,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="searchDisplayController" destination="wyJ-9T-UBV" id="Ep4-rN-vn1"/>
+                        <outlet property="searchDisplayController" destination="YDd-Wh-it3" id="DQD-9c-rO0"/>
                         <outlet property="tblView" destination="GGd-Tm-ZVW" id="lRK-Od-KiQ"/>
                     </connections>
                 </viewController>
@@ -110,6 +110,14 @@
                         <outlet property="searchContentsController" destination="BYZ-38-t0r" id="z4s-eB-wyo"/>
                         <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="Cu5-WC-T1k"/>
                         <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="hzp-bg-UpC"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="YDd-Wh-it3">
+                    <connections>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="wOt-3I-xOU"/>
+                        <outlet property="searchContentsController" destination="BYZ-38-t0r" id="job-cu-b2P"/>
+                        <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="DFE-eG-4cx"/>
+                        <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="V2c-1h-Hay"/>
                     </connections>
                 </searchDisplayController>
             </objects>

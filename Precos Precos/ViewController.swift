@@ -19,6 +19,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let precoRepo = PrecoRepository()
     var hasDownloaded = false;
     
+    var resultSearchController:UISearchController!
+    var filterProducts:[Produto] = [Produto]()
+    
     override func viewDidAppear(animated: Bool) {
         /*
         
@@ -50,20 +53,45 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        // 1
+        resultSearchController = UISearchController(searchResultsController: nil)
+        // 2
+        resultSearchController.searchResultsUpdater = self
+        // 3
+        resultSearchController.hidesNavigationBarDuringPresentation = false
+        
+        resultSearchController.definesPresentationContext = true
+        // 4
+        resultSearchController.dimsBackgroundDuringPresentation = false
+        // 5
+        resultSearchController.searchBar.searchBarStyle = UISearchBarStyle.Prominent
+        // 6
+        resultSearchController.searchBar.sizeToFit()
+        // 7
+        self.tblView.tableHeaderView = resultSearchController.searchBar
+                
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if (resultSearchController.active && resultSearchController.searchBar.text != "") {
+            return filterProducts.count
+        }
+        
         return produtoRepo.getTotal()
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let productCell : ProdutoCell = tableView.dequeueReusableCellWithIdentifier("ProdutoCell") as! ProdutoCell
-        let produto = produtoRepo.getProdutoByIndex(indexPath.row)
+        
+        let produto : Produto?
+        
+        if (resultSearchController.active && resultSearchController.searchBar.text != "") {
+            produto = filterProducts[indexPath.row]
+        } else {
+            produto = produtoRepo.getProdutoByIndex(indexPath.row)
+        }
+        
         var cheaperPrice:Preco? = nil
         var coverImage:Imagem? = nil
         
@@ -84,7 +112,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let produto = produtoRepo.getProdutoByIndex(indexPath.row)
+        let produto :Produto
+        
+        if (resultSearchController.active && resultSearchController.searchBar.text != ""){
+            produto = filterProducts[indexPath.row]
+            resultSearchController.active = false //this isnt the right way to do it
+        }else{
+            produto = produtoRepo.getProdutoByIndex(indexPath.row)!
+        }
+        
         
         let detailedViewController : DetailViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
         
@@ -104,9 +140,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             for jProd in json! {
                 if(i==0){
                     img = produtoRepo.save(jProd as! NSDictionary, callback: refreshUI)!.id!
-                    i++
+                    i += 1
                 } else {
-                produtoRepo.save(jProd as! NSDictionary, callback: refreshUI)
+                    produtoRepo.save(jProd as! NSDictionary, callback: refreshUI)
                 }
             }
         }
@@ -133,5 +169,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
         
+}
+
+
+extension ViewController: UISearchResultsUpdating {
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        
+        if (searchController.active) {
+            filterProducts = produtoRepo.getProutosByName(searchController.searchBar.text!)
+            refreshUI()
+        }
+        
+    }
 }
 

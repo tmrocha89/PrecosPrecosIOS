@@ -34,6 +34,12 @@ class ProdutoRepository {
         }
     }
     
+    func getProutosByName(name: String) -> [Produto]{
+        let produtosTemp = produtos.filter{produto in
+            return (produto.nome?.lowercaseString.containsString(name.lowercaseString))!}
+        return produtosTemp
+    }
+    
     func save(jProduto:NSDictionary, callback:(()->Void)) -> Produto? {
         let id = jProduto["_id"] as! String
         

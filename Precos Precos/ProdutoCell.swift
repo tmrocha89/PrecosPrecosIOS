@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProdutoCell: UITableViewCell {
+class ProdutoCell: UITableViewCell{
 
     @IBOutlet weak var productTitleLbl: UILabel!
     
