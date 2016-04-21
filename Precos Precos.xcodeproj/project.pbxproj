@@ -25,6 +25,7 @@
 		A126BD7F1CBAFCB300A03F07 /* PrecoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126BD7E1CBAFCB300A03F07 /* PrecoRepository.swift */; };
 		A12ADADA1CB59E9A001BA2C3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12ADAD91CB59E9A001BA2C3 /* DetailViewController.swift */; };
 		A12ADADD1CB5A356001BA2C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A12ADADB1CB5A356001BA2C3 /* Main.storyboard */; };
+		A19DB5CF1CC961EB0054FA03 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19DB5CE1CC961EB0054FA03 /* TransitionManager.swift */; };
 		A1CCAEFB1CB2EEBB00D57228 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CCAEFA1CB2EEBB00D57228 /* AppDelegate.swift */; };
 		A1CCAEFD1CB2EEBB00D57228 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CCAEFC1CB2EEBB00D57228 /* ViewController.swift */; };
 		A1CCAF021CB2EEBB00D57228 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1CCAF011CB2EEBB00D57228 /* Assets.xcassets */; };
@@ -57,6 +58,7 @@
 		A126BD7E1CBAFCB300A03F07 /* PrecoRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrecoRepository.swift; path = repository/PrecoRepository.swift; sourceTree = "<group>"; };
 		A12ADAD91CB59E9A001BA2C3 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		A12ADADC1CB5A356001BA2C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A19DB5CE1CC961EB0054FA03 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		A1CCAEF71CB2EEBB00D57228 /* Precos Precos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Precos Precos.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1CCAEFA1CB2EEBB00D57228 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1CCAEFC1CB2EEBB00D57228 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				A1ECC9AA1CB6F8F700E1A068 /* PrecosModel.xcdatamodeld */,
 				A126BD2C1CB81D8D00A03F07 /* Repositories */,
 				A1F0E17E1CBC381000EDC6B0 /* controllers */,
+				A19DB5CE1CC961EB0054FA03 /* TransitionManager.swift */,
 			);
 			path = "Precos Precos";
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				A1F0E17C1CBC36BF00EDC6B0 /* Server+CoreDataProperties.swift in Sources */,
 				A11AE6B81CB3A7E50071442F /* ProdutoCell.swift in Sources */,
 				A1CCAEFB1CB2EEBB00D57228 /* AppDelegate.swift in Sources */,
+				A19DB5CF1CC961EB0054FA03 /* TransitionManager.swift in Sources */,
 				A126BD771CBA703C00A03F07 /* Imagem.swift in Sources */,
 				A126BD751CBA703C00A03F07 /* Preco.swift in Sources */,
 				A126BD791CBA703C00A03F07 /* Produto.swift in Sources */,

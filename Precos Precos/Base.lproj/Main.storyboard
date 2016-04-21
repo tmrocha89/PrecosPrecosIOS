@@ -66,6 +66,7 @@
                                             <outlet property="productPriceLbl" destination="azN-Sc-ikz" id="22K-lM-24q"/>
                                             <outlet property="productStoreLbl" destination="9hE-Ae-ASR" id="PeV-jf-Vqc"/>
                                             <outlet property="productTitleLbl" destination="bwB-kB-AcH" id="fIt-nK-3e6"/>
+                                            <segue destination="0w9-MB-wuX" kind="modal" identifier="ViewDetails" id="XWr-zI-JVy"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

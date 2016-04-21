@@ -22,6 +22,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var resultSearchController:UISearchController!
     var filterProducts:[Produto] = [Produto]()
     
+    var transitionManager = TransitionManager()
+    
     override func viewDidAppear(animated: Bool) {
         /*
         
@@ -112,7 +114,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let produto :Produto
+        /*let produto :Produto
         
         if (resultSearchController.active && resultSearchController.searchBar.text != ""){
             produto = filterProducts[indexPath.row]
@@ -120,13 +122,33 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }else{
             produto = produtoRepo.getProdutoByIndex(indexPath.row)!
         }
+        */
         
+        //var detailedViewController : DetailViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
         
-        let detailedViewController : DetailViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
+        //detailedViewController.produto = produto
         
-        detailedViewController.produto = produto
+        self.performSegueWithIdentifier("ViewDetails", sender: self)
         
-        self.presentViewController(detailedViewController, animated: true, completion: nil)
+        //self.presentViewController(detailedViewController, animated: true, completion: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "ViewDetails"){
+            if let detailViewController = segue.destinationViewController as? DetailViewController{
+                let path = tblView.indexPathForSelectedRow?.row
+                detailViewController.produto = produtoRepo.getProdutoByIndex(path!)
+                
+            }
+            //tblPrecos.indexPathForSelectedRow
+        }
+        // this gets a reference to the screen that we're about to transition to
+        let toViewController = segue.destinationViewController as UIViewController
+        
+        // instead of using the default transition animation, we'll ask
+        // the segue to use our custom TransitionManager object to manage the transition animation
+        toViewController.transitioningDelegate = self.transitionManager
+        
     }
     
     func setup(authenticated:Bool?, error:ErrorType?) -> Void {
